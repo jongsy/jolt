@@ -11,17 +11,15 @@
 		{{ $errors->first('password') }}
 	</p>
 
-	<p>
-		{{ Form::label('email', 'Email Address') }}
-		{{ Form::text('email', Input::old('email'), array('placeholder' => '')) }}
-	</p>
+	<div class="form-group">
+		{{ Form::text('email', Input::old('email'), array('placeholder' => 'email', 'class' => 'form-control login-field')) }}
+	</div>
+	<div class="form-group">
+		{{ Form::password('password', array('class' => 'form-control login-field', 'placeholder' => 'password')) }}
+	</div>
 
-	<p>
-		{{ Form::label('password', 'Password') }}
-		{{ Form::password('password') }}
-	</p>
-
-	<p>{{ Form::submit('Submit!') }}</p>
-{{ Form::close() }}
+	{{ Form::submit('Submit!', ['class' => 'btn btn-primary btn-lg btn-block']) }}
+	{{ Form::close() }}
 
 @stop
+

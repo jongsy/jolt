@@ -16,7 +16,9 @@ class HomeController extends BaseController {
 	*/
 
 	public function viewHome() {
-		return View::make('home');
+		$site = Site::find(1);
+		$pages = $site->pages;
+		return View::make('home')->with('site', $site)->with('pages', $pages);
 	}
 
 	public function showLogin()

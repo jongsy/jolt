@@ -11,10 +11,11 @@
 |
 */
 
-
-// route to show the login form
-Route::get('login', array('uses' => 'HomeController@showLogin'));
-
+Route::group(array('before' => 'guest'), function()
+{
+	// route to show the login form
+	Route::get('login', array('uses' => 'HomeController@showLogin'));
+});
 // route to process the form
 Route::post('login', array('uses' => 'HomeController@doLogin'));
 
@@ -23,7 +24,17 @@ Route::post('login', array('uses' => 'HomeController@doLogin'));
 Route::group(array('before' => 'auth'), function()
 {
 
-Route::get('/', 'homeController@viewHome');
-Route::get('logout', array('uses' => 'HomeController@doLogout'));
+	Route::get('/', 'homeController@viewHome');
+	Route::get('logout', array('uses' => 'HomeController@doLogout'));
+
+	Route::get('/page/{id}', 'pageController@showForFrame');
+
+	Route::get('/site/edit/{id}', 'siteController@edit');
+	Route::get('/page/edit/{id}', 'pageController@edit');
 
 });
+
+Route::group(array('prefix' => 'api'), function() {
+	Route::resource('pages', 'PageController');
+});
+
