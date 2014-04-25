@@ -11,7 +11,19 @@
 |
 */
 
-Route::get('/', function()
+
+// route to show the login form
+Route::get('login', array('uses' => 'HomeController@showLogin'));
+
+// route to process the form
+Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+
+//Route group to login page if not authenticated.
+Route::group(array('before' => 'auth'), function()
 {
-	return View::make('hello');
+
+Route::get('/', 'homeController@viewHome');
+Route::get('logout', array('uses' => 'HomeController@doLogout'));
+
 });
