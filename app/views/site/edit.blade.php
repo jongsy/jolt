@@ -5,9 +5,9 @@
 
 {{ $site->title }}
 
-@foreach($pages as $page)
+@foreach($siteFiles as $file)
 
-<a href="/page/edit/{{$page->id}}" class="page-link">{{$page->title}}</a>
+<a href="/file/edit/{{$file->id}}" class="file-link">{{$file->title}}</a>
 
 @endforeach
 

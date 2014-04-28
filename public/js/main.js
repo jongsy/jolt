@@ -11,7 +11,7 @@ $(function() {
 	    bindKey: {win: 'Ctrl-S',  mac: 'Command-S'},
 	    exec: function(editor) {
 	       $.ajax({
-			    url: '/api/pages/'+pageId,
+			    url: '/api/file/'+pageId,
 			    type: 'PUT',
 			    data: {"content": editor.getValue() },
 			    success: function(result) {
@@ -24,7 +24,7 @@ $(function() {
 	    readOnly: true // false if this command should not apply in readOnly mode
 	});
 
-    $.get("/api/pages/"+pageId, function (data) {
+    $.get("/api/file/"+pageId, function (data) {
     	 editor.setValue(data.content);
     })
 })

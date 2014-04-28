@@ -27,14 +27,16 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/', 'homeController@viewHome');
 	Route::get('logout', array('uses' => 'HomeController@doLogout'));
 
-	Route::get('/page/{id}', 'pageController@showForFrame');
 
 	Route::get('/site/edit/{id}', 'siteController@edit');
-	Route::get('/page/edit/{id}', 'pageController@edit');
+
+	Route::get('/file/{id}', 'SiteFileController@showPublic');
+	Route::get('/{site_id}/{filename}', 'SiteFileController@showPublicAlias');
+	Route::get('/file/edit/{id}', 'SiteFileController@edit');
 
 });
 
 Route::group(array('prefix' => 'api'), function() {
-	Route::resource('pages', 'PageController');
+	Route::resource('file', 'SiteFileController');
 });
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagesTable extends Migration {
+class CreateSiteFilesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,14 @@ class CreatePagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('pages', function(Blueprint $table)
+		Schema::create('site_files', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('title', 255);
 			$table->string('content', 10000);
 			$table->integer('site_id')->unsigned();
+			$table->string('mime', 255);
+			$table->integer('parent_id')->unsigned();
 			$table->timestamps();
 		});
 	}
@@ -29,7 +31,7 @@ class CreatePagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('pages');
+		Schema::drop('site_files');
 	}
 
 }

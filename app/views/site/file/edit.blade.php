@@ -4,9 +4,9 @@
 
 {{ $site->title }}
 
-@foreach($pages as $pageI)
+@foreach($siteFiles as $fileI)
 
-<a href="/page/edit/{{$pageI->id}}" class="page-link">{{$pageI->title}}</a>
+<a href="/file/edit/{{$fileI->id}}" class="file-link">{{$fileI->title}}</a>
 
 @endforeach
 
@@ -16,7 +16,7 @@
 <div id="editor" style="width: 400px; height: 500px; float: left;">
 	
 </div>
-<iframe class="viewer" src="/page/{{$page->id}}" style="width: 500px; height: 500px; float: left;"></iframe>
+<iframe class="viewer" src="/file/{{$siteFile->id}}" style="width: 500px; height: 500px; float: left;"></iframe>
 
 @stop
 
