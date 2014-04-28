@@ -16,6 +16,7 @@ class CreateSitesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title', 500);
+			$table->integer('user_id')->unsigned();
 			$table->timestamps();
 		});
 	}

@@ -5,6 +5,11 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+	public function sites()
+    {
+        return $this->hasMany('Site');
+    }
+
 	/**
 	 * The database table used by the model.
 	 *

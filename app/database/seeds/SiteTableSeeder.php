@@ -9,7 +9,8 @@ class SiteTableSeeder extends Seeder
 		DB::table('sites')->delete();
 
 		Site::create(array(
-			'title' => 'test site 1'
+			'title' => 'test site 1',
+			'user_id' => 1
 		));
 
 		Site::create(array(

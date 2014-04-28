@@ -7,5 +7,9 @@ class Site extends Eloquent {
     {
         return $this->hasMany('SiteFile');
     }
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 
 }
