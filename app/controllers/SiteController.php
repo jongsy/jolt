@@ -58,7 +58,7 @@ class SiteController extends \BaseController {
 		//
 		$site = Site::find($id);
 		$pages = $site->pages;
-		return View::make('site.page.edit')->with('site', $site)->with('pages', $pages);
+		return View::make('site.edit')->with('site', $site)->with('pages', $pages);
 		
 	}
 
