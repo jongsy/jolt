@@ -49,9 +49,12 @@ class SiteController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($user_name, $site_name)
 	{
-		
+		$user = User::where('username', $user_name)->first();
+		$site = Site::where('title', $site_name)->where('user_id', $user->id)->first();
+		$siteFiles = $site->SiteFiles;
+		return View::make('site.edit')->with('site', $site)->with('siteFiles', $siteFiles);
 	}
 
 	/**
@@ -104,7 +107,13 @@ class SiteController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$data = Input::all();
+		if ($data['site_id']) {
+			$site = Site::find($data['site_id']);
+			$site->title = $data['title'];
+			$site->save();
+			return Redirect::back();
+		}
 	}
 
 

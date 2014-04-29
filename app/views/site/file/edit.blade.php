@@ -13,6 +13,8 @@
 
 <a href="{{ URL::to('logout') }}" style="float: left; width: 100%;">Logout</a>
 
+
+
 <div id="editor" style="width: 400px; height: 500px; float: left;">
 	
 </div>

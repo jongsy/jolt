@@ -14,6 +14,21 @@
 
 <a href="{{ URL::to('logout') }}" style="float: left; width: 100%;">Logout</a>
 
+<div id="editor" style="width: 400px; height: 500px; float: left;">
+	
+</div>
+<iframe class="viewer" src="/file/{{--$siteFile->id--}}" style="width: 500px; height: 500px; float: left;"></iframe>
+
+{{ Form::open(array('url' => url('/site/update'))) }}
+
+{{ Form::text('title', $site->title, array('placeholder'=>'Title')); }}
+
+{{ Form::hidden('site_id', $site->id); }}
+
+{{ Form::button("update Site" ,array('type'=>'submit','class'=>'btn btn-blue')); }}
+
+
+{{ Form::close() }}
 
 @stop
 

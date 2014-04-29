@@ -32,9 +32,11 @@ Route::group(array('before' => 'auth'), function()
 	//Routes seen by users should always use the username subdomain.
 	Route::group(array('domain' => '{user}.jolt'), function() {
 	    Route::get('/', 'UserController@showProfile');
-	    Route::get('/{site_name}', 'SiteController@showPublicAlias');
-	    Route::get('/site/add', 'SiteController@store');
+	    ///Route::get('/site/add', 'SiteController@store');
 	    Route::post('/site/add', 'SiteController@store');
+	    Route::get('/{site_name}', 'SiteController@showPublicAlias');
+	    Route::get('/{site_name}/edit', 'SiteController@show');
+	    Route::post('/{site_name}/update', 'SiteController@update');
 	    Route::get('/{site_name}/{file_name}', 'SiteFileController@showPublicAlias');
 
 	});
