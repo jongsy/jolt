@@ -14,7 +14,8 @@ class SiteTableSeeder extends Seeder
 		));
 
 		Site::create(array(
-			'title' => 'test site 2'
+			'title' => 'testsite',
+			'user_id' => 1
 		));
 	}
 

@@ -28,21 +28,25 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('logout', array('uses' => 'HomeController@doLogout'));
 
 	//If user is on subdomain go to user page else redirect to front page
+
+	//Routes seen by users should always use the username subdomain.
 	Route::group(array('domain' => '{user}.jolt'), function() {
 	    Route::get('/', 'UserController@showProfile');
+	    Route::get('/{site_name}', 'SiteController@showPublicAlias');
+	    Route::get('/{site_name}/{file_name}', 'SiteFileController@showPublicAlias');
 	});
 	Route::get('/', 'HomeController@viewHome');
 
 	Route::get('/site/edit/{id}', 'siteController@edit');
 
 	Route::get('/file/{id}', 'SiteFileController@showPublic');
-	Route::get('/{site_id}/{filename}', 'SiteFileController@showPublicAlias');
+	
 	Route::get('/file/edit/{id}', 'SiteFileController@edit');
 
 });
 
 
-
+//api prefix should be used for JSON resources
 Route::group(array('prefix' => 'api'), function() {
 	Route::resource('file', 'SiteFileController');
 });

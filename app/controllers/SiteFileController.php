@@ -66,12 +66,19 @@ class SiteFileController extends \BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  string  $user_name
+	 * @param  string  $site_name
+	 * @param  string  $file_name
 	 * @return Response
 	 */
-	public function showPublicAlias($site_name, $fileName)
+	public function showPublicAlias($user_name, $site_name, $fileName)
 	{
-		$site = Site::where('title', $site_name)->first();
+		//TODO:
+		//Validate to make sure the site belongs to the user
+		//mime should be bale to handle images not just text
+
+		$user = User::where('username', $user_name)->first();
+		$site = Site::where('title', $site_name)->where('user_id', $user->id)->first();
 		$site_id = $site->id;
 		//build into url filename parser
 		$fileArray = explode(".", $fileName);

@@ -46,6 +46,31 @@ class SiteController extends \BaseController {
 		
 	}
 
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  string  $user_name
+	 * @param  string  $site_name
+	 * @param  string  $file_name
+	 * @return Response
+	 */
+	public function showPublicAlias($user_name, $site_name)
+	{
+		//TODO:
+		//Validate to make sure the site belongs to the user
+		//mime should be bale to handle images not just text
+
+		$user = User::where('username', $user_name)->first();
+		$site = Site::where('title', $site_name)->where('user_id', $user->id)->first();
+		$site_id = $site->id;
+
+		//find index siteFile and render
+		$file = SiteFile::where('site_id', $site_id)->where('title', "index")->first();
+		
+		return View::make('iframe.iframe')->with('siteFile', $file);
+
+	}
+
 
 	/**
 	 * Show the form for editing the specified resource.

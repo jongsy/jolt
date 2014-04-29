@@ -67,7 +67,9 @@ class UserController extends \BaseController {
 	public function showProfile($user_name)
 	{
 		$user = User::where('username', $user_name)->first();
-		return $user->sites->first()->title;
+		$sites = Site::where('user_id', $user->id)->get();
+		return View::make('profile.show')->with('user', $user)->with('sites', $sites);
+		//return $user->sites->first()->title;
 	}
 
 
