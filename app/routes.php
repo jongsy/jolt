@@ -33,7 +33,10 @@ Route::group(array('before' => 'auth'), function()
 	Route::group(array('domain' => '{user}.jolt'), function() {
 	    Route::get('/', 'UserController@showProfile');
 	    Route::get('/{site_name}', 'SiteController@showPublicAlias');
+	    Route::get('/site/add', 'SiteController@store');
+	    Route::post('/site/add', 'SiteController@store');
 	    Route::get('/{site_name}/{file_name}', 'SiteFileController@showPublicAlias');
+
 	});
 	Route::get('/', 'HomeController@viewHome');
 

@@ -31,7 +31,15 @@ class SiteController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$site = new Site;
+        $title = Input::get('title');
+        if (!$title) {
+        	return "fail";
+        }
+        $site->title = $title;
+        $site->user_id = Auth::user()->id;
+        $site->save();
+		return "hooray!";
 	}
 
 
