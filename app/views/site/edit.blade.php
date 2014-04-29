@@ -1,5 +1,16 @@
 @extends('layouts.master')
 
+@section('head')
+{{-- obj attached to window with files --}}
+<script>
+	window.jolt = {
+		site: {{$site}},
+		siteFiles: {{ $siteFiles }}
+	}
+
+</script>
+@stop
+
 @section('content')
 
 

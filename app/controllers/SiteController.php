@@ -112,7 +112,7 @@ class SiteController extends \BaseController {
 			$site = Site::find($data['site_id']);
 			$site->title = $data['title'];
 			$site->save();
-			return Redirect::back();
+			return Redirect::to('/'.$site->title.'/edit');
 		}
 	}
 

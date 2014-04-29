@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Jolt!</title>
-    @yield('head')
+    
     <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
-
+    @yield('head')
     <!-- Loading Bootstrap -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 

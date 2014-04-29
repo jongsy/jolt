@@ -7,7 +7,7 @@
 
 @foreach($sites as $site)
 <br>
-<a href="{{ url('/'.$site->title) }}">{{ $site->title }}</a>
+<a href="{{ url('/'.$site->title.'/edit') }}">{{ $site->title }}</a>
 @endforeach
 
 {{-- put the create site form here --}}
