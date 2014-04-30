@@ -75,6 +75,10 @@ function SiteEditor (site, files, iframe, editor) {
 		}
 	}
 
+	this.buildTabs = function () {
+		
+	}
+
 	this.newFile = function () {
 		this.file = false;
 		editor.setValue('');
@@ -116,8 +120,12 @@ function SiteEditor (site, files, iframe, editor) {
 			var fileExtension = "html";
 			//check to see if it's a valid extension
 			console.log(titleArray[titleArray.length-1]);
-			if ('html|htm|css|js'.indexOf(titleArray[titleArray.length-1])) {
+			if ('html|htm|css|js'.indexOf(titleArray[titleArray.length-1]) > -1) {
+				
+				console.log(titleArray);
 				fileExtension = titleArray.pop();
+				console.log('match');
+				console.log(titleArray);
 			}
 			var title = titleArray.join('.');
 
