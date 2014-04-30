@@ -32,7 +32,11 @@ class SiteFileController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+        
+        $file = SiteFile::create($input);
+
+        return Response::json($file);
 	}
 
 

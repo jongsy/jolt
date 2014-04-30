@@ -39,7 +39,7 @@ class SiteController extends \BaseController {
         $site->title = $title;
         $site->user_id = Auth::user()->id;
         $site->save();
-		return "hooray!";
+		return Redirect::to('/'.$site->title.'/edit');
 	}
 
 
